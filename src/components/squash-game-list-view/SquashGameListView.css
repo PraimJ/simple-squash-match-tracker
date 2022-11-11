@@ -1,0 +1,13 @@
+.list-container {
+    padding: 3%;
+    border: 2px solid red;
+}
+
+.list {
+    list-style: none;
+}
+
+.list-item {
+    border: 1px solid blue;
+    padding: 3%;
+}
