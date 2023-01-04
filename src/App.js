@@ -39,3 +39,37 @@ window.addEventListener(onMatchDataSubmitted, handleOnMatchDataSubmitted(newSubm
 });
 
 */
+
+import { useState, useEffect } from 'react';
+
+const useCounter = (forwards = true) => {
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (forwards) {
+        setCounter((prevCounter) => prevCounter + 1);
+      } else {
+        setCounter((prevCounter) => prevCounter - 1);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [forwards]);
+
+  return counter;
+};
+
+export default useCounter;
+
+
+import Card from './Card';
+import useCounter from '../hooks/use-counter';
+
+const BackwardCounter = () => {
+  const counter = useCounter(false);
+
+  return <Card>{counter}</Card>;
+};
+
+export default BackwardCounter;
